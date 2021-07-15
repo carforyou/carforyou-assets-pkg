@@ -1,10 +1,10 @@
-# CAR FOR YOU Example
+# CAR FOR YOU assets
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 ## Usage
 ```
-npm install @carforyou/example
+npm install @carforyou/assets-pkg
 ```
 
 ## Development
@@ -14,11 +14,11 @@ npm run build
 
 You can link your local npm package to integrate it with any local project:
 ```
-cd carforyou-example-pkg
+cd carforyou-assets-pkg
 npm run build
 
 cd carforyou-listings-web
-npm link ../carforyou-example-pkg/pkg
+npm link ../carforyou-assets-pkg/pkg
 ```
 
 ## Release a new version

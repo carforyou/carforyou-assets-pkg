@@ -1,7 +1,7 @@
 {
-  "name": "@carforyou/example",
+  "name": "@carforyou/assets",
   "version": "0.0.0",
-  "description": "Example package",
+  "description": "Assets package to build and optimize our svgs",
   "scripts": {
     "version": "npm run build",
     "build": "pika build",
@@ -13,11 +13,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/carforyou/carforyou-example-pkg.git"
+    "url": "git+https://github.com/carforyou/carforyou-assets-pkg.git"
   },
   "author": "CAR FOR YOU",
   "license": "MIT",
-  "homepage": "https://github.com/carforyou/example-pkg#readme",
+  "homepage": "https://github.com/carforyou/assets-pkg#readme",
   "devDependencies": {
     "@carforyou/eslint-config": "3.1.7",
     "@pika/pack": "^0.5.0",
@@ -42,10 +42,10 @@
         }
       ],
       [
-        "@pika/plugin-build-web"
-      ],
-      [
-        "@pika/plugin-build-node"
+        "@pika/plugin-simple-bin",
+        {
+          "bin": "cfy-assets"
+        }
       ]
     ]
   },
