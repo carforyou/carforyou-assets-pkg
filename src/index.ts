@@ -4,9 +4,16 @@ import unknown from "./unknown"
 import { optimize } from "./optimize"
 import { components } from "./components"
 import { clean } from "./clean"
+import { createIndexFiles } from "./createIndexFiles"
+
+interface IndexFile {
+  path: string
+  extension: "tsx" | "svg"
+}
 
 export interface AssetsConfig {
   rootPath: string
+  indexFiles?: IndexFile[]
 }
 
 const loadConfiguration = (): AssetsConfig => {
@@ -17,6 +24,7 @@ const loadConfiguration = (): AssetsConfig => {
   } else {
     return {
       rootPath: "./assets",
+      indexFiles: [],
     }
   }
 }
@@ -29,7 +37,7 @@ export default function run(args) {
     clean,
     optimize,
     components,
-    index: () => console.log("index"),
+    index: createIndexFiles,
   }
 
   const command = commands[selectedCommand]

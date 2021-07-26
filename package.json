@@ -57,6 +57,7 @@
     "svgo": "^2.3.1",
     "@svgr/core": "^5.4.0",
     "lodash.camelcase": "^4.3.0",
-    "lodash.upperfirst": "^4.3.1"
+    "lodash.upperfirst": "^4.3.1",
+    "create-index-normalized": "^1.2.0"
   }
 }

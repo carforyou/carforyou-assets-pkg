@@ -24,6 +24,17 @@ else
     exit 1
 fi
 
+./pkg/dist-node/index.bin.js index
+INDEX_FILE_TSX=./assets/dist/bodyTypes/index.js
+INDEX_FILE_SVG=./assets/dist/badges/index.js
+if [ -f "$INDEX_FILE_TSX" -a -f "$INDEX_FILE_SVG" ]; then
+    echo "PASS (index): index files do exist exists."
+else
+    echo "FAILED (index): index files do not exist."
+    exit 1
+fi
+
+
 ./pkg/dist-node/index.bin.js clean
 DIR=./assets/dist
 if [ -d "$DIR" ]; then

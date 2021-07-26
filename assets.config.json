@@ -1,3 +1,13 @@
 {
-  "rootPath": "./assets"
+  "rootPath": "./assets",
+  "indexFiles": [
+    {
+      "path": "bodyTypes",
+      "extension": "tsx"
+    },
+    {
+      "path": "badges",
+      "extension": "svg"
+    }
+  ]
 }
