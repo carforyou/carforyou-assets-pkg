@@ -40,6 +40,10 @@ export const components = (args, config: AssetsConfig) => {
       componentName: upperFirst(outFileName + componentNameSuffix),
     })
 
+    Debugger.log(
+      "Create component: " + upperFirst(outFileName + componentNameSuffix)
+    )
+
     fs.writeFileSync(outPath, componentCode)
   })
 }

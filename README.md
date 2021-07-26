@@ -7,6 +7,32 @@
 npm install @carforyou/assets-pkg
 ```
 
+### clean `dist`
+```
+npx cfy-assets clean
+```
+
+### optimize svg from `src` to `dist`
+```
+npx cfy-assets optimize
+```
+
+### generate components from optimized svg
+```
+npx cfy-assets components
+```
+
+
+### create index
+```
+npx cfy-assets index
+```
+
+### run all commands at once without worrying about the order
+```
+npx cfy-assets build
+```
+
 ## Configuration
 You can create a `assets.config.json` file in your root directory and specify the following things:
 
