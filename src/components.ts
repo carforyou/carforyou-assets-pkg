@@ -31,12 +31,8 @@ export const components = (args, config: AssetsConfig) => {
       path.dirname(sourceFile).split(path.sep).slice(-1)[0]
     ).replace(/s$/, "")
     const dirPath = path.dirname(sourceFile)
-
     const outPath = path.join(dirPath, `${outFileName}.tsx`)
-
-    Debugger.log(
-      `Generate tsx component of ${sourceFile} from path ${dirPath} to path ${outPath}`
-    )
+    Debugger.log(`Generate tsx component of ${sourceFile} to path ${outPath}`)
 
     const svgCode = fs.readFileSync(sourceFile).toString()
 

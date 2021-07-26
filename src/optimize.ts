@@ -22,13 +22,10 @@ export const optimize = (args, config: AssetsConfig) => {
 
   const sources = glob.sync(`${srcDir}/**/**/*.svg`)
   sources.forEach((sourceFile) => {
-    Debugger.log("Optimize source file " + sourceFile)
     const dirPath = path.dirname(sourceFile).replace(srcDir, distDir)
     fs.mkdirSync(dirPath, { recursive: true })
     const outPath = sourceFile.replace(srcDir, distDir)
-    Debugger.log(
-      `Optimize source file ${sourceFile} from path ${dirPath} to path ${outPath}`
-    )
+    Debugger.log(`Optimize source file ${sourceFile} to path ${outPath}`)
     const svg = fs.readFileSync(sourceFile)
 
     const optimizedSvg = svgo.optimize(svg, svgoConfig)

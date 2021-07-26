@@ -16,6 +16,8 @@ You can create a `assets.config.json` file in your root directory and specify th
 | `indexFiles`| array   | Add the path to the directory you want to create an index file of. |
 | `debug`     | boolean | If you want to log details to your console or not |
 
+**Your svgs have to be placed within a rootPath/src folder.**
+
 ````json
 {
   "rootPath": "./assets",

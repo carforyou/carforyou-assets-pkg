@@ -29,6 +29,7 @@ const loadConfiguration = (): AssetsConfig => {
     return {
       rootPath: "./assets",
       indexFiles: [],
+      debug: false,
     }
   }
 }
@@ -48,7 +49,6 @@ export default function run(args) {
   }
 
   const command = commands[selectedCommand]
-  Debugger.log("Command selected " + command)
   command ? command(args, config) : unknown(Object.keys(commands))
   process.exit(0)
 }

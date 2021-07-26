@@ -9,5 +9,7 @@ export const build = (args, config: AssetsConfig) => {
   clean(args, config)
   optimize(args, config)
   components(args, config)
-  createIndexFiles(args, config)
+  if (config.indexFiles && config.indexFiles.length) {
+    createIndexFiles(args, config)
+  }
 }
