@@ -32,18 +32,16 @@ export const components = (args, config: AssetsConfig) => {
     ).replace(/s$/, "")
     const dirPath = path.dirname(sourceFile)
     const outPath = path.join(dirPath, `${outFileName}.tsx`)
-    Debugger.log(`Generate tsx component of ${sourceFile} to path ${outPath}`)
-
-    const svgCode = fs.readFileSync(sourceFile).toString()
-
-    const componentCode = svgr.sync(svgCode, svgrOptions, {
-      componentName: upperFirst(outFileName + componentNameSuffix),
-    })
+    const componentName = upperFirst(outFileName + componentNameSuffix)
 
     Debugger.log(
-      "Create component: " + upperFirst(outFileName + componentNameSuffix)
+      `Generate tsx component of ${sourceFile} to path ${outPath} with the name ${componentName}`
     )
 
+    const svgCode = fs.readFileSync(sourceFile).toString()
+    const componentCode = svgr.sync(svgCode, svgrOptions, {
+      componentName,
+    })
     fs.writeFileSync(outPath, componentCode)
   })
 }
