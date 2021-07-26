@@ -9,5 +9,6 @@
       "path": "badges",
       "extension": "svg"
     }
-  ]
+  ],
+  "debug": false
 }

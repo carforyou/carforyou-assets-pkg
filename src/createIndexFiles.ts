@@ -5,6 +5,9 @@ import { AssetsConfig } from "./index"
 
 export const createIndexFiles = (args, config: AssetsConfig) => {
   if (!(config.indexFiles && config.indexFiles.length)) {
+    console.info(
+      "Index was called but no path was provided. Please specify an index path in your assets.config.json"
+    )
     return
   }
 

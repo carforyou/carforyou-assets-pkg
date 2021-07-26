@@ -7,6 +7,7 @@ import { createIndexFiles } from "./createIndexFiles"
 import { components } from "./components"
 import { clean } from "./clean"
 import { build } from "./build"
+import { Debugger } from "./Debugger"
 
 interface IndexFile {
   path: string
@@ -16,6 +17,7 @@ interface IndexFile {
 export interface AssetsConfig {
   rootPath: string
   indexFiles?: IndexFile[]
+  debug?: boolean
 }
 
 const loadConfiguration = (): AssetsConfig => {
@@ -34,6 +36,8 @@ const loadConfiguration = (): AssetsConfig => {
 export default function run(args) {
   const selectedCommand = args[2]
   const config = loadConfiguration()
+  Debugger.setIsDebugMode(config.debug)
+  Debugger.log("Loaded config " + JSON.stringify(config))
 
   const commands = {
     build,
@@ -44,6 +48,7 @@ export default function run(args) {
   }
 
   const command = commands[selectedCommand]
+  Debugger.log("Command selected " + command)
   command ? command(args, config) : unknown(Object.keys(commands))
   process.exit(0)
 }
