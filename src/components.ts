@@ -4,6 +4,7 @@ import camelCase from "lodash.camelcase"
 import glob from "glob"
 import fs from "fs-extra"
 import svgr from "@svgr/core"
+
 import { AssetsConfig } from "./index"
 
 const svgrOptions = {

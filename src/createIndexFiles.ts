@@ -1,6 +1,7 @@
-import { AssetsConfig } from "./index"
-import { execSync } from "child_process"
 import fs from "fs"
+import { execSync } from "child_process"
+
+import { AssetsConfig } from "./index"
 
 export const createIndexFiles = (args, config: AssetsConfig) => {
   if (!(config.indexFiles && config.indexFiles.length)) {

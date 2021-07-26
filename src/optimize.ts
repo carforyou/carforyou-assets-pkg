@@ -2,6 +2,7 @@ import svgo, { extendDefaultPlugins } from "svgo"
 import path from "path"
 import glob from "glob"
 import fs from "fs-extra"
+
 import { AssetsConfig } from "./index"
 
 const svgoConfig = {

@@ -1,10 +1,12 @@
 import path from "path"
 import fs from "fs"
-import unknown from "./unknown"
+
+import { unknown } from "./unknown"
 import { optimize } from "./optimize"
+import { createIndexFiles } from "./createIndexFiles"
 import { components } from "./components"
 import { clean } from "./clean"
-import { createIndexFiles } from "./createIndexFiles"
+import { build } from "./build"
 
 interface IndexFile {
   path: string
@@ -34,9 +36,10 @@ export default function run(args) {
   const config = loadConfiguration()
 
   const commands = {
+    build,
     clean,
-    optimize,
     components,
+    optimize,
     index: createIndexFiles,
   }
 
