@@ -2,15 +2,25 @@
 
 set -e
 npm run build
+echo "Stay tuned... tests are running!"
+
 ./pkg/dist-node/index.bin.js clean
 
 ./pkg/dist-node/index.bin.js optimize
-
 OPTIMIZED_SVG=./assets/dist/car.svg
 if [ -f "$OPTIMIZED_SVG" ]; then
     echo "PASS (optimize): $OPTIMIZED_SVG exists."
 else
     echo "FAILED (optimize): $OPTIMIZED_SVG does not exist."
+    exit 1
+fi
+
+./pkg/dist-node/index.bin.js components
+OPTIMIZED_COMPONENT=./assets/dist/car.tsx
+if [ -f "$OPTIMIZED_COMPONENT" ]; then
+    echo "PASS (components): $OPTIMIZED_COMPONENT exists."
+else
+    echo "FAILED (components): $OPTIMIZED_COMPONENT does not exist."
     exit 1
 fi
 
