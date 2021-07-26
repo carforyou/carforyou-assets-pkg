@@ -3,11 +3,11 @@ import fs from "fs"
 
 import { unknown } from "./unknown"
 import { optimize } from "./optimize"
+import { Debugger } from "./Debugger"
 import { createIndexFiles } from "./createIndexFiles"
 import { components } from "./components"
 import { clean } from "./clean"
 import { build } from "./build"
-import { Debugger } from "./Debugger"
 
 interface IndexFile {
   path: string

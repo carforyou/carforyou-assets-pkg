@@ -5,8 +5,9 @@ import glob from "glob"
 import fs from "fs-extra"
 import svgr from "@svgr/core"
 
-import { AssetsConfig } from "./index"
 import { Debugger } from "./Debugger"
+
+import { AssetsConfig } from "./index"
 
 const svgrOptions = {
   dimensions: false, // we want direct control over dimensions

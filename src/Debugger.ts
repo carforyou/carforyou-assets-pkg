@@ -2,7 +2,7 @@ export class Debugger {
   private static instance: Debugger
   private isDebugMode = false
 
-  private constructor() {}
+  private constructor() {} // eslint-disable-line @typescript-eslint/no-empty-function
 
   public static setIsDebugMode(debug: boolean) {
     if (!Debugger.instance) {
