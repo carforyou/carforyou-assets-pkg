@@ -17,12 +17,15 @@ const svgoConfig = {
 }
 
 export const optimize = (args, config: AssetsConfig) => {
-  const sources = glob.sync(`${config.rootPath}/src/**/**/*.svg`)
+  const srcDir = `${config.rootPath}/src`
+  const distDir = `${config.rootPath}/dist`
+
+  const sources = glob.sync(`${srcDir}/**/**/*.svg`)
   sources.forEach((sourceFile) => {
     Debugger.log("Optimize source file " + sourceFile)
-    const dirPath = path.dirname(sourceFile).replace("/src", "/dist")
+    const dirPath = path.dirname(sourceFile).replace(srcDir, distDir)
     fs.mkdirSync(dirPath, { recursive: true })
-    const outPath = sourceFile.replace("/src/", "/dist/")
+    const outPath = sourceFile.replace(srcDir, distDir)
     Debugger.log(
       `Optimize source file ${sourceFile} from path ${dirPath} to path ${outPath}`
     )
