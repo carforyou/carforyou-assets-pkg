@@ -17,6 +17,7 @@ interface IndexFile {
 export interface AssetsConfig {
   rootPath: string
   indexFiles?: IndexFile[]
+  replaceColors?: string[]
   debug?: boolean
 }
 

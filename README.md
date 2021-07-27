@@ -36,11 +36,12 @@ npx cfy-assets build
 ## Configuration
 You can create a `assets.config.json` file in your root directory and specify the following things:
 
-| Property    | Type    | Format |
-| ----------- | ------- | ------ |
-| `rootPath`  | string  | Add the root path to your svg assets relative to your config file. Your svgs must then be placed within that root folder in an `src` directory |
-| `indexFiles`| array   | Add the path to the directory you want to create an index file of. |
-| `debug`     | boolean | If you want to log details to your console or not |
+| Property       | Type    | Format |
+| -------------- | ------- | ------ |
+| `rootPath`     | string  | Add the root path to your svg assets relative to your config file. Your svgs must then be placed within that root folder in an `src` directory |
+| `indexFiles`   | array   | Add the path to the directory you want to create an index file of. |
+| `replaceColors`| array   | Array of strings with colors you want to replace with `currentColor` |
+| `debug`        | boolean | If you want to log details to your console or not |
 
 **Your svgs have to be placed within a rootPath/src folder.**
 
@@ -56,6 +57,11 @@ You can create a `assets.config.json` file in your root directory and specify th
       "path": "badges",
       "extension": "svg"
     }
+  ],
+  "replaceColors": [
+    "#222",
+    "#FF301C",
+    "#FFFFFF"
   ],
   "debug": false
 }
@@ -96,10 +102,3 @@ npm link ../carforyou-assets-pkg/pkg
 
 New versions are released on the ci using semantic-release as soon as you merge into master. Please
 make sure your merge commit message adheres to the corresponding conventions.
-
-
-## Circle CI
-
-You will need to enable the repository in circle CI ui to be able to build it.
-
-For slack notifications to work you will need to provide the token in circle settings.

@@ -9,18 +9,20 @@ import { Debugger } from "./debugger"
 
 import { AssetsConfig } from "./index"
 
-const svgrOptions = {
-  dimensions: false, // we want direct control over dimensions
-  icon: true, // preserve viewBox property
-  replaceAttrValues: {
-    // map all relevant fills to currentColor
-    "#222": "currentColor",
-    "#232A36": "currentColor",
-    "#323232": "currentColor",
-    "#F73B47": "currentColor",
-    "#FF301C": "currentColor",
-    "#FFFFFF": "currentColor",
-  },
+const getSvgrOptions = (config: AssetsConfig) => {
+  const replaceAttrValues = {}
+
+  if (config.replaceColors) {
+    config.replaceColors.forEach((color) => {
+      replaceAttrValues[color] = "currentColor"
+    })
+  }
+
+  return {
+    dimensions: false, // we want direct control over dimensions
+    icon: true, // preserve viewBox property
+    replaceAttrValues,
+  }
 }
 
 export const components = (args, config: AssetsConfig) => {
@@ -39,7 +41,7 @@ export const components = (args, config: AssetsConfig) => {
     )
 
     const svgCode = fs.readFileSync(sourceFile).toString()
-    const componentCode = svgr.sync(svgCode, svgrOptions, {
+    const componentCode = svgr.sync(svgCode, getSvgrOptions(config), {
       componentName,
     })
     fs.writeFileSync(outPath, componentCode)
