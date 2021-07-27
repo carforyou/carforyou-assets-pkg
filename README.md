@@ -7,43 +7,49 @@
 npm install @carforyou/assets-pkg
 ```
 
-### clean `dist`
+### clean, optimize, generate components and index without worrying about the order
+```
+npx cfy-assets build
+```
+
+### clean `dist` directory
 ```
 npx cfy-assets clean
 ```
+Removes all the auto-generated files.
 
 ### optimize svg from `src` to `dist`
 ```
 npx cfy-assets optimize
 ```
+Copies the original svg to the `dist` directory and optimizes them.
 
 ### generate components from optimized svg
 ```
 npx cfy-assets components
 ```
-
+Generates `tsx` components from the optimized svg.
 
 ### create index
 ```
 npx cfy-assets index
 ```
-
-### run all commands at once without worrying about the order
-```
-npx cfy-assets build
+Creates an index file from a complete directory so that they can be included as follows:
+```javascript
+import * as bodyTypeIcons from "~/assets/dist/bodyTypes"
 ```
 
 ## Configuration
-You can create a `assets.config.json` file in your root directory and specify the following things:
+You can create a configuration file called `assets.config.json` in your root directory and specify the following things:
 
 | Property       | Type    | Format |
 | -------------- | ------- | ------ |
-| `rootPath`     | string  | Add the root path to your svg assets relative to your config file. Your svgs must then be placed within that root folder in an `src` directory |
+| `rootPath`     | string  | Add the root path to your svg assets relative to your config file. Your svg must then be placed within that root folder in an `src` directory |
 | `indexFiles`   | array   | Add the path to the directory you want to create an index file of. |
 | `replaceColors`| array   | Array of strings with colors you want to replace with `currentColor` |
 | `debug`        | boolean | If you want to log details to your console or not |
 
-**Your svgs have to be placed within a rootPath/src folder.**
+**Your svg have to be placed within a rootPath/src folder.**
 
 ````json
 {
