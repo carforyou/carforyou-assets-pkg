@@ -3,7 +3,7 @@ import fs from "fs"
 
 import { unknown } from "./unknown"
 import { optimize } from "./optimize"
-import { Debugger } from "./Debugger"
+import { Debugger } from "./debugger"
 import { createIndexFiles } from "./createIndexFiles"
 import { components } from "./components"
 import { clean } from "./clean"
