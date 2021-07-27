@@ -27,6 +27,8 @@ const getSvgrOptions = (config: AssetsConfig) => {
 
 export const components = (args, config: AssetsConfig) => {
   const sources = glob.sync(`${config.rootPath}/dist/**/**/*.svg`)
+  const svgrConfig = getSvgrOptions(config)
+  Debugger.log("Loaded svgr config: " + JSON.stringify(svgrConfig))
   sources.forEach((sourceFile) => {
     const outFileName = camelCase(path.basename(sourceFile, ".svg"))
     const componentNameSuffix = upperFirst(
@@ -41,7 +43,7 @@ export const components = (args, config: AssetsConfig) => {
     )
 
     const svgCode = fs.readFileSync(sourceFile).toString()
-    const componentCode = svgr.sync(svgCode, getSvgrOptions(config), {
+    const componentCode = svgr.sync(svgCode, svgrConfig, {
       componentName,
     })
     fs.writeFileSync(outPath, componentCode)

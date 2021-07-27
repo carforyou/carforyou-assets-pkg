@@ -39,7 +39,7 @@ export default function run(args) {
   const selectedCommand = args[2]
   const config = loadConfiguration()
   Debugger.setIsDebugMode(config.debug)
-  Debugger.log("Loaded config " + JSON.stringify(config))
+  Debugger.log("Loaded assets config " + JSON.stringify(config))
 
   const commands = {
     build,
