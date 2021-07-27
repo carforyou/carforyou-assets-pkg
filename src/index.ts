@@ -30,6 +30,7 @@ const loadConfiguration = (): AssetsConfig => {
     return {
       rootPath: "./assets",
       indexFiles: [],
+      replaceColors: [],
       debug: false,
     }
   }
