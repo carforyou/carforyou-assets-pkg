@@ -2,10 +2,7 @@ import path from "path"
 import fs from "fs"
 
 import { unknown } from "./unknown"
-import { optimize } from "./optimize"
 import { Debugger } from "./debugger"
-import { createIndexFiles } from "./createIndexFiles"
-import { components } from "./components"
 import { clean } from "./clean"
 import { build } from "./build"
 
@@ -45,9 +42,6 @@ export default function run(args) {
   const commands = {
     build,
     clean,
-    components,
-    optimize,
-    index: createIndexFiles,
   }
 
   const command = commands[selectedCommand]
