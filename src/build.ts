@@ -1,9 +1,8 @@
 import { optimize } from "./optimize"
+import { AssetsConfig } from "./loadConfiguration"
 import { createIndexFiles } from "./createIndexFiles"
 import { components } from "./components"
 import { clean } from "./clean"
-
-import { AssetsConfig } from "./index"
 
 export const build = (args, config: AssetsConfig) => {
   clean(args, config)

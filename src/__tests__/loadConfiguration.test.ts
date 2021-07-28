@@ -3,7 +3,7 @@ import { validateConfiguration } from "../loadConfiguration"
 jest.spyOn(process, "exit").mockImplementation()
 jest.spyOn(console, "error").mockImplementation()
 
-const validConfig = require("../../assets.config.json")
+const validConfig = require("../../assets.config.json") // eslint-disable-line @typescript-eslint/no-var-requires
 
 describe("loadConfiguration", () => {
   beforeEach(() => {

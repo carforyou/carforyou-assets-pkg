@@ -5,9 +5,8 @@ import glob from "glob"
 import fs from "fs-extra"
 import svgr from "@svgr/core"
 
+import { AssetsConfig } from "./loadConfiguration"
 import { Debugger } from "./debugger"
-
-import { AssetsConfig } from "./index"
 
 const getSvgrOptions = (config: AssetsConfig) => {
   const replaceAttrValues = {}

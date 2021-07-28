@@ -3,9 +3,8 @@ import path from "path"
 import glob from "glob"
 import fs from "fs-extra"
 
+import { AssetsConfig } from "./loadConfiguration"
 import { Debugger } from "./debugger"
-
-import { AssetsConfig } from "./index"
 
 const svgoConfig = {
   plugins: extendDefaultPlugins([

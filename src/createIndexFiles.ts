@@ -1,7 +1,7 @@
 import fs from "fs"
 import { execSync } from "child_process"
 
-import { AssetsConfig } from "./index"
+import { AssetsConfig } from "./loadConfiguration"
 
 export const createIndexFiles = (args, config: AssetsConfig) => {
   if (!(config.indexFiles && config.indexFiles.length)) {
