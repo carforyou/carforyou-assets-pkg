@@ -19,6 +19,13 @@ export const optimize = (args, config: AssetsConfig) => {
   const srcDir = `${config.rootPath}/src`
   const distDir = `${config.rootPath}/dist`
 
+  if (!fs.existsSync(srcDir)) {
+    console.error(
+      `${srcDir} does not exist. Please place your svg assets in an src folder`
+    )
+    process.exit(1)
+  }
+
   const sources = glob.sync(`${srcDir}/**/**/*.svg`)
   sources.forEach((sourceFile) => {
     const dirPath = path.dirname(sourceFile).replace(srcDir, distDir)
