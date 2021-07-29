@@ -13,20 +13,22 @@ export interface AssetsConfig {
   debug?: boolean
 }
 
+const defaultConfig = {
+  rootPath: "./assets",
+  indexFiles: [],
+  replaceColors: [],
+  debug: false,
+}
+
 export const loadConfiguration = (): AssetsConfig => {
   const configPath = path.join(process.cwd(), "assets.config.json")
 
   if (fs.existsSync(configPath)) {
     const parsedConfig = JSON.parse(fs.readFileSync(configPath).toString())
     validateConfiguration(parsedConfig)
-    return parsedConfig
+    return { ...defaultConfig, ...parsedConfig }
   } else {
-    return {
-      rootPath: "./assets",
-      indexFiles: [],
-      replaceColors: [],
-      debug: false,
-    }
+    return defaultConfig
   }
 }
 
