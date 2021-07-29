@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "jest",
-    "test:integration": "sh test.sh"
+    "test:integration": "sh __tests__/test.sh"
   },
   "repository": {
     "type": "git",

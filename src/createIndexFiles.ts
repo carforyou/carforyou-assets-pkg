@@ -1,5 +1,4 @@
 import fs from "fs"
-import { execSync } from "child_process"
 import { writeIndex } from "create-index-normalized"
 
 import { AssetsConfig } from "./loadConfiguration"
