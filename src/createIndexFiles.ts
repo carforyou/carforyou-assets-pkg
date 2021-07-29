@@ -1,5 +1,6 @@
 import fs from "fs"
 import { execSync } from "child_process"
+import { writeIndex } from "create-index-normalized"
 
 import { AssetsConfig } from "./loadConfiguration"
 
@@ -19,8 +20,8 @@ export const createIndexFiles = (args, config: AssetsConfig) => {
   }
 
   config.indexFiles.forEach((file) => {
-    execSync(
-      `npx create-index-normalized ${config.rootPath}/dist/${file.path} -x ${file.extension}`
-    )
+    writeIndex([`${config.rootPath}/dist/${file.path}`], {
+      extensions: [file.extension],
+    })
   })
 }
