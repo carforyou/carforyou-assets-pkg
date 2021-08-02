@@ -56,7 +56,7 @@ export const optimize = (args, config: AssetsConfig) => {
     Debugger.log(`Optimize source file ${sourceFile} to path ${outPath}`)
     const svg = fs.readFileSync(sourceFile)
 
-    const accessibilityTitle = getAccessibilityTitle(sourceFile)
+    const accessibilityTitle = getAccessibilityTitle(sourceFile).toLowerCase()
 
     const optimizedSvg = svgo.optimize(svg, getConfig({ accessibilityTitle }))
     fs.writeFileSync(outPath, optimizedSvg.data)

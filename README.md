@@ -104,6 +104,14 @@ module.exports = {
 }
 ````
 
+### Accessibility
+To make your svg accessible, assets-pkg automatically adds you a title tag to the svg that will be picked up by a screen reader.
+By default, the title tag contains of the file name and the directory where it's located. E.g.:
+- assets/src/instagram.svg -> title = instagram
+- assets/src/badges/verified.svg -> title = verified badge
+
+If you are not happy with the auto-generated one, you can add a title tag to your original svg. assets-pkg will not overwrite it.
+
 ## Development
 ```
 npm run build
