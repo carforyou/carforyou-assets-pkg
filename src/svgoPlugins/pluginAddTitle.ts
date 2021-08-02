@@ -17,20 +17,17 @@ export const pluginAddTitle = (
     return data
   }
   const rootSvg = data.children[0]
-  const titleId = camelCase(params.title + "Title")
   const titleElement = rootSvg.children.find((el) => el.name === "title")
-  if (titleElement) {
-    titleElement.attributes.id = titleId
-  } else {
+  if (!titleElement) {
     rootSvg.children.unshift({
       type: "element",
       name: "title",
-      attributes: { id: titleId },
+      attributes: {},
       isElem: () => true,
       children: [{ type: "text", value: params.title }],
     })
+    rootSvg.attributes["aria-label"] = params.title
   }
-  rootSvg.attributes["aria-labelledby"] = titleId
   rootSvg.attributes["role"] = "img"
   return data
 }
