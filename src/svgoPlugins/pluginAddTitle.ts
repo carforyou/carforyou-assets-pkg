@@ -1,3 +1,5 @@
+import camelCase from "lodash.camelcase"
+
 type SVG = {
   type: string
   name?: string
@@ -15,7 +17,7 @@ export const pluginAddTitle = (
     return data
   }
   const rootSvg = data.children[0]
-  const titleId = params.title.replace(/\s/g, "").concat("Title")
+  const titleId = camelCase(params.title + "Title")
   const titleElement = rootSvg.children.find((el) => el.name === "title")
   if (titleElement) {
     titleElement.attributes.id = titleId

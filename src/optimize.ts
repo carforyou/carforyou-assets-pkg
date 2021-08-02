@@ -1,12 +1,11 @@
 import svgo, { extendDefaultPlugins } from "svgo"
 import path from "path"
-import upperFirst from "lodash.upperfirst"
 import glob from "glob"
 import fs from "fs-extra"
 
 import { pluginAddTitle } from "./svgoPlugins/pluginAddTitle"
 import { AssetsConfig } from "./loadConfiguration"
-import { fileName, nameSuffix } from "./helpers/nameHelper"
+import { nameSuffix } from "./helpers/nameHelper"
 import { Debugger } from "./debugger"
 
 const getConfig = (options: { accessibilityTitle: string }) => {
@@ -37,6 +36,13 @@ const getConfig = (options: { accessibilityTitle: string }) => {
   }
 }
 
+const getAccessibilityTitle = (sourceFile: string) => {
+  const title = path.basename(sourceFile, ".svg").split("-").join(" ")
+  return nameSuffix(sourceFile) === "Src"
+    ? title
+    : `${title} ${nameSuffix(sourceFile)}`
+}
+
 export const optimize = (args, config: AssetsConfig) => {
   const srcDir = `${config.rootPath}/src`
   const distDir = `${config.rootPath}/dist`
@@ -61,12 +67,4 @@ export const optimize = (args, config: AssetsConfig) => {
     const optimizedSvg = svgo.optimize(svg, getConfig({ accessibilityTitle }))
     fs.writeFileSync(outPath, optimizedSvg.data)
   })
-}
-
-const getAccessibilityTitle = (sourceFile: string) => {
-  if (nameSuffix(sourceFile) === "Src") {
-    return upperFirst(fileName(sourceFile))
-  } else {
-    return upperFirst(fileName(sourceFile) + " " + nameSuffix(sourceFile))
-  }
 }
