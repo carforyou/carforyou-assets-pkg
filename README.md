@@ -112,6 +112,8 @@ By default, the title tag contains of the file name and the directory where it's
 
 If you are not happy with the auto-generated one, you can add a title tag to your original svg. assets-pkg will not overwrite it.
 
+For better browser support, assets-pkg also adds the required `aria-labelledby`, `id` and `role=img`.
+
 ## Development
 ```
 npm run build
