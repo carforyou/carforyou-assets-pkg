@@ -6,6 +6,7 @@
 ```
 npm install @carforyou/assets-pkg
 ```
+This package generates minified `tsx` components from your svg files so that you can include it as an inline svg into your React components.
 
 ### build optimized assets
 ```
@@ -15,6 +16,35 @@ npx cfy-assets build
 2. Optimizes the svg files into the `dist` directory
 3. Generates the `tsx` components into the `dist` directory
 4. Generates the index files for the configured files
+
+#### Before
+```
+your-project
+├── assets.config.json
+└── assets
+  └── src
+    ├── your svg files
+    └── some_subfolder
+        └── other svg files
+```
+
+#### After
+```
+your-project
+├── assets.config.json
+└── assets
+  └── src
+  | ├── your original svg files
+  | └── some_subfolder
+  |     └── other original svg files
+  └── dist
+    ├── your minified svg files
+    ├── your minified tsx components
+    └── some_subfolder
+        ├── other minified svg files
+        ├── other minified tsx components
+        └── index.js file
+```
 
 ### clean `dist` directory
 ```
@@ -28,7 +58,7 @@ You can create a configuration file called `assets.config.json` in your root dir
 | Property       | Type    | Default    | Format | 
 | -------------- | ------- | ---------- | ------ |
 | `rootPath`     | string  | `./assets` | Add the root path to your svg assets relative to your config file. Your svg must then be placed within that root folder in an `src` directory |
-| `indexFiles`   | array   | `[]`       | Add the path to the directory you want to create an index file of |
+| `indexFiles`   | array   | `[]`       | Add the path relative to the directory you want to create an index file of. The option will create an `index.js` file with all the svg/tsx components in this directory |
 | `replaceColors`| array   | `[]`       | Array of strings with colors you want to replace with `currentColor` |
 | `debug`        | boolean | `false`    | If you want to log details to your console or not |
 
@@ -56,17 +86,23 @@ You can create a configuration file called `assets.config.json` in your root dir
 }
 ````
 
-```
-your-project
-├── assets.config.json
-├── assets
-  └── src
-    └── your svg files
-    ├── bodyTypes
-    ├   └── your bodyTypes svg files
-    ├── badges
-        └── your badges svg files
-```
+### Ignore automatically generated folders/files
+
+You may want to ignore the folders and files the package generates automatically and only check in the original files
+into your git repository. For that, please add the line `rootPath/dist/` (e.g. _assets/dist_ or _src/assets/dist_) to:
+- .gitignore
+- .prettierignore
+
+### Configure eslint
+eslint can help you to enforce defined rules in your code base. To restrict imports of original svgs so that only minified svgs are used, you can configure eslint as follows:
+````javascript
+module.exports = {
+    rules: {
+        "no-restricted-imports": ["error", { patterns: ["~/assets/src"] } ],
+        "no-restricted-modules": ["error", { patterns: ["~/assets/src"] } ]
+    }
+}
+````
 
 ## Development
 ```
