@@ -1,5 +1,3 @@
-import camelCase from "lodash.camelcase"
-
 type SVG = {
   type: string
   name?: string
