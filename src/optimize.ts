@@ -24,10 +24,6 @@ const getConfig = (options: { accessibilityTitle: string }) => {
         active: false,
       },
       {
-        name: "removeXMLNS",
-        active: true,
-      },
-      {
         name: "accessibility",
         description: "make svg accessible",
         type: "full",
