@@ -111,7 +111,7 @@ By default, the title tag contains of the file name and the directory where it's
 - assets/src/badges/verified.svg -> title = verified badge
 For better browser support, assets-pkg also adds `aria-label` and `role=img`.
   
-If you are not happy with the auto-generated result you can pass a `title`, `titleId` and set `aria-label` to null as follows:
+If you are not happy with the auto-generated result you can pass a `title` and `aria-label` to overwrite it:
 
 ````javascript
 <BuyerProtectionIcon
@@ -119,8 +119,7 @@ If you are not happy with the auto-generated result you can pass a `title`, `tit
       height="32"
       className="text-teal flex-shrink-0"
       title="Title that tells the viewer something meaningful as a tooltip"
-      titleId="abc-123"
-      aria-label={null}
+      aria-label="Same as title or something else the screen reader should pickup"
 />
 ````
 
