@@ -111,15 +111,16 @@ By default, the title tag contains of the file name and the directory where it's
 - assets/src/badges/verified.svg -> title = verified badge
 For better browser support, assets-pkg also adds `aria-label` and `role=img`.
   
-If you are not happy with the auto-generated result you can pass a `title`, `titleId` and `aria-label` prop to your component as follows:
+If you are not happy with the auto-generated result you can pass a `title`, `titleId` and set `aria-label` to null as follows:
 
 ````javascript
 <BuyerProtectionIcon
       width="32"
       height="32"
       className="text-teal flex-shrink-0"
-      title="Title that tells the viewer something meaningful"
+      title="Title that tells the viewer something meaningful as a tooltip"
       titleId="abc-123"
+      aria-label={null}
 />
 ````
 
