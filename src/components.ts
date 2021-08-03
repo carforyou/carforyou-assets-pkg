@@ -21,6 +21,7 @@ const getSvgrOptions = (config: AssetsConfig) => {
   return {
     dimensions: false, // we want direct control over dimensions
     icon: true, // preserve viewBox property
+    titleProp: true,
     replaceAttrValues,
   }
 }
