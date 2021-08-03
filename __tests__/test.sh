@@ -11,6 +11,10 @@ echo "Stay tuned... tests are running!"
 chmod +x ./__tests__/optimize.sh
 ./__tests__/optimize.sh
 
+# Accessibility
+chmod +x ./__tests__/accessibility.sh
+./__tests__/accessibility.sh
+
 # Generate components
 OPTIMIZED_COMPONENT=./assets/dist/car.tsx
 if [ -f "$OPTIMIZED_COMPONENT" ]; then

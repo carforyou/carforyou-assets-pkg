@@ -3,16 +3,44 @@ import path from "path"
 import glob from "glob"
 import fs from "fs-extra"
 
+import { pluginAddTitle } from "./svgoPlugins/pluginAddTitle"
 import { AssetsConfig } from "./loadConfiguration"
+import { nameSuffix } from "./helpers/nameHelper"
 import { Debugger } from "./debugger"
 
-const svgoConfig = {
-  plugins: extendDefaultPlugins([
-    {
-      name: "removeViewBox",
-      active: false,
-    },
-  ]),
+const getConfig = (options: { accessibilityTitle: string }) => {
+  return {
+    plugins: extendDefaultPlugins([
+      {
+        name: "removeViewBox",
+        active: false,
+      },
+      {
+        name: "removeTitle",
+        active: false,
+      },
+      {
+        name: "removeDesc",
+        active: false,
+      },
+      {
+        name: "accessibility",
+        description: "make svg accessible",
+        type: "full",
+        params: {
+          title: options.accessibilityTitle,
+        },
+        fn: pluginAddTitle,
+      },
+    ]),
+  }
+}
+
+const getAccessibilityTitle = (sourceFile: string) => {
+  const title = path.basename(sourceFile, ".svg").split("-").join(" ")
+  return nameSuffix(sourceFile) === "Src"
+    ? title
+    : `${title} ${nameSuffix(sourceFile)}`
 }
 
 export const optimize = (args, config: AssetsConfig) => {
@@ -34,7 +62,9 @@ export const optimize = (args, config: AssetsConfig) => {
     Debugger.log(`Optimize source file ${sourceFile} to path ${outPath}`)
     const svg = fs.readFileSync(sourceFile)
 
-    const optimizedSvg = svgo.optimize(svg, svgoConfig)
+    const accessibilityTitle = getAccessibilityTitle(sourceFile).toLowerCase()
+
+    const optimizedSvg = svgo.optimize(svg, getConfig({ accessibilityTitle }))
     fs.writeFileSync(outPath, optimizedSvg.data)
   })
 }

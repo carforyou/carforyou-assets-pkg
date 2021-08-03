@@ -104,6 +104,25 @@ module.exports = {
 }
 ````
 
+### Accessibility
+To make your svg accessible, assets-pkg automatically adds you a title tag and an `aria-label` to the svg that will be picked up by a screen reader.
+By default, the title tag contains of the file name and the directory where it's located. E.g.:
+- assets/src/instagram.svg -> title = instagram
+- assets/src/badges/verified.svg -> title = verified badge
+For better browser support, assets-pkg also adds `aria-label` and `role=img`.
+  
+If you are not happy with the auto-generated result you can pass a `title` and `aria-label` to overwrite it:
+
+````javascript
+<BuyerProtectionIcon
+      width="32"
+      height="32"
+      className="text-teal flex-shrink-0"
+      title="Title that tells the viewer something meaningful as a tooltip"
+      aria-label="Same as title or something else the screen reader should pickup"
+/>
+````
+
 ## Development
 ```
 npm run build
