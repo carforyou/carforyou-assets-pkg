@@ -1,4 +1,4 @@
-import svgo, { extendDefaultPlugins } from "svgo"
+import svgo from "svgo"
 import path from "path"
 import glob from "glob"
 import fs from "fs-extra"
