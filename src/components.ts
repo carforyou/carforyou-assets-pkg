@@ -9,27 +9,15 @@ import { AssetsConfig } from "./loadConfiguration"
 import { nameSuffix } from "./helpers/nameHelper"
 import { Debugger } from "./debugger"
 
-const getSvgrOptions = (config: AssetsConfig) => {
-  const replaceAttrValues = {}
-
-  if (config.replaceColors) {
-    config.replaceColors.forEach((color) => {
-      replaceAttrValues[color] = "currentColor"
-    })
-  }
-
-  return {
+export const components = (args, config: AssetsConfig) => {
+  const sources = glob.sync(`${config.rootPath}/dist/**/**/*.svg`)
+  const svgrConfig = {
     dimensions: false, // we want direct control over dimensions
     icon: true, // preserve viewBox property
     titleProp: true,
     typescript: true,
-    replaceAttrValues,
   }
-}
 
-export const components = (args, config: AssetsConfig) => {
-  const sources = glob.sync(`${config.rootPath}/dist/**/**/*.svg`)
-  const svgrConfig = getSvgrOptions(config)
   Debugger.log("Loaded svgr config: " + JSON.stringify(svgrConfig))
   sources.forEach((sourceFile) => {
     const outFileName = camelCase(path.basename(sourceFile, ".svg"))

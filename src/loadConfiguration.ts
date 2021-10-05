@@ -9,14 +9,12 @@ interface IndexFile {
 export interface AssetsConfig {
   rootPath: string
   indexFiles?: IndexFile[]
-  replaceColors?: string[]
   debug?: boolean
 }
 
 const defaultConfig = {
   rootPath: "./assets",
   indexFiles: [],
-  replaceColors: [],
   debug: false,
 }
 
@@ -33,12 +31,11 @@ export const loadConfiguration = (): AssetsConfig => {
 }
 
 export const validateConfiguration = (config) => {
-  const { rootPath, indexFiles, replaceColors, debug } = config || {}
+  const { rootPath, indexFiles, debug } = config || {}
   const errors = []
 
   rootPath && validateRootPath(rootPath, errors)
   indexFiles && validateIndexFiles(indexFiles, errors)
-  replaceColors && validateReplaceColors(replaceColors, errors)
   debug && validateDebug(debug, errors)
 
   if (errors.length) {
@@ -71,22 +68,6 @@ const validateIndexFiles = (indexFiles, errors: string[]) => {
   ) {
     errors.push(
       "Wrong structure for indexFiles. Please provide an array with the structure [{ path: string, extension: tsx | svg }]"
-    )
-  }
-}
-
-const validateReplaceColors = (replaceColors, errors: string[]) => {
-  if (!Array.isArray(replaceColors)) {
-    errors.push("replaceColors must be an array")
-  }
-  if (
-    replaceColors.length &&
-    !replaceColors.every(
-      (el) => el && typeof el === "string" && el.startsWith("#")
-    )
-  ) {
-    errors.push(
-      "Wrong structure for replaceColors. Please provide an array containing HEX color strings"
     )
   }
 }

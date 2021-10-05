@@ -10,13 +10,5 @@
       "extension": "svg"
     }
   ],
-  "replaceColors": [
-    "#222",
-    "#232A36",
-    "#323232",
-    "#F73B47",
-    "#FF301C",
-    "#FFFFFF"
-  ],
   "debug": false
 }
