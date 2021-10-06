@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@types/node": "^14.14.31",
-    "svgo": "^2.3.1",
+    "svgo": "^2.7.0",
     "@svgr/core": "^5.4.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.upperfirst": "^4.3.1",
