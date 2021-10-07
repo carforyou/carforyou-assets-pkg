@@ -57,22 +57,4 @@ describe("loadConfiguration", () => {
       })
     })
   })
-
-  describe("replaceColors", () => {
-    it("should validate if replaceColors is an array", () => {
-      validateConfiguration({ ...validConfig, replaceColors: true })
-      expect(process.exit).toHaveBeenCalledWith(1)
-      expect(console.error).toHaveBeenCalledWith(
-        "replaceColors must be an array"
-      )
-    })
-
-    it("should be an array containing hex colors", () => {
-      validateConfiguration({ ...validConfig, replaceColors: ["FFF"] })
-      expect(process.exit).toHaveBeenCalledWith(1)
-      expect(console.error).toHaveBeenCalledWith(
-        expect.stringContaining("Wrong structure for replaceColors")
-      )
-    })
-  })
 })

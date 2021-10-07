@@ -59,7 +59,6 @@ You can create a configuration file called `assets.config.json` in your root dir
 | -------------- | ------- | ---------- | ------ |
 | `rootPath`     | string  | `./assets` | Add the root path to your svg assets relative to your config file. Your svg must then be placed within that root folder in an `src` directory |
 | `indexFiles`   | array   | `[]`       | Add the path relative to the directory you want to create an index file of. The option will create an `index.js` file with all the svg/tsx components in this directory |
-| `replaceColors`| array   | `[]`       | Array of strings with colors you want to replace with `currentColor` |
 | `debug`        | boolean | `false`    | If you want to log details to your console or not |
 
 **Your svg have to be placed within a rootPath/src folder.**
@@ -76,11 +75,6 @@ You can create a configuration file called `assets.config.json` in your root dir
       "path": "badges",
       "extension": "svg"
     }
-  ],
-  "replaceColors": [
-    "#222",
-    "#FF301C",
-    "#FFFFFF"
   ],
   "debug": false
 }

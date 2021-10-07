@@ -1,4 +1,4 @@
-import svgo, { extendDefaultPlugins } from "svgo"
+import svgo from "svgo"
 import path from "path"
 import glob from "glob"
 import fs from "fs-extra"
@@ -10,18 +10,16 @@ import { Debugger } from "./debugger"
 
 const getConfig = (options: { accessibilityTitle: string }) => {
   return {
-    plugins: extendDefaultPlugins([
+    plugins: [
       {
-        name: "removeViewBox",
-        active: false,
-      },
-      {
-        name: "removeTitle",
-        active: false,
-      },
-      {
-        name: "removeDesc",
-        active: false,
+        name: "preset-default",
+        params: {
+          overrides: {
+            removeViewBox: false,
+            removeTitle: false,
+            removeDesc: false,
+          },
+        },
       },
       {
         name: "accessibility",
@@ -32,7 +30,7 @@ const getConfig = (options: { accessibilityTitle: string }) => {
         },
         fn: pluginAddTitle,
       },
-    ]),
+    ],
   }
 }
 
