@@ -3,7 +3,7 @@ import upperFirst from "lodash.upperfirst"
 import camelCase from "lodash.camelcase"
 import glob from "glob"
 import fs from "fs-extra"
-import svgr from "@svgr/core"
+import { transform } from "@svgr/core"
 
 import { AssetsConfig } from "./loadConfiguration"
 import { nameSuffix } from "./helpers/nameHelper"
@@ -30,7 +30,7 @@ export const components = (args, config: AssetsConfig) => {
     )
 
     const svgCode = fs.readFileSync(sourceFile).toString()
-    const componentCode = svgr.sync(svgCode, svgrConfig, {
+    const componentCode = transform.sync(svgCode, svgrConfig, {
       componentName,
     })
     fs.writeFileSync(outPath, componentCode)
