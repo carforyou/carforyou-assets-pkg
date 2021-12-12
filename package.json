@@ -54,11 +54,12 @@
     ]
   },
   "dependencies": {
-    "@types/node": "16.11.11",
-    "svgo": "2.8.0",
     "@svgr/core": "6.1.1",
+    "@types/node": "16.11.11",
+    "create-index-normalized": "1.2.0",
+    "fs-extra": "10.0.0",
     "lodash.camelcase": "4.3.0",
     "lodash.upperfirst": "4.3.1",
-    "create-index-normalized": "1.2.0"
+    "svgo": "2.8.0"
   }
 }
