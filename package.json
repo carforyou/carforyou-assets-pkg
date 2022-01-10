@@ -54,7 +54,7 @@
     ]
   },
   "dependencies": {
-    "@types/node": "16.11.17",
+    "@types/node": "16.11.19",
     "svgo": "2.8.0",
     "@svgr/core": "6.1.2",
     "lodash.camelcase": "4.3.0",
