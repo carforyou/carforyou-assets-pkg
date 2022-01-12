@@ -55,7 +55,7 @@ Removes all the auto-generated files.
 ## Configuration
 You can create a configuration file called `assets.config.json` in your root directory and specify the following things:
 
-| Property       | Type    | Default    | Format | 
+| Property       | Type    | Default    | Format |
 | -------------- | ------- | ---------- | ------ |
 | `rootPath`     | string  | `./assets` | Add the root path to your svg assets relative to your config file. Your svg must then be placed within that root folder in an `src` directory |
 | `indexFiles`   | array   | `[]`       | Add the path relative to the directory you want to create an index file of. The option will create an `index.js` file with all the svg/tsx components in this directory |
@@ -104,7 +104,7 @@ By default, the title tag contains of the file name and the directory where it's
 - assets/src/instagram.svg -> title = instagram
 - assets/src/badges/verified.svg -> title = verified badge
 For better browser support, assets-pkg also adds `aria-label` and `role=img`.
-  
+
 If you are not happy with the auto-generated result you can pass a `title` and `aria-label` to overwrite it:
 
 ````javascript
@@ -133,7 +133,7 @@ cd carforyou-assets-pkg
 npm run build
 
 cd carforyou-listings-web
-npm link ../carforyou-assets-pkg/pkg
+npm link ../carforyou-assets-pkg
 ```
 
 ## Release a new version
