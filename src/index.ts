@@ -16,6 +16,9 @@ export default function run(args) {
   }
 
   const command = commands[selectedCommand]
+  console.log({command})
   command ? command(args, config) : unknown(Object.keys(commands))
   process.exit(0)
 }
+
+run(process.argv)

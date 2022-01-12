@@ -4,8 +4,9 @@ set -e
 npm run build
 echo "Stay tuned... tests are running!"
 
-./pkg/dist-node/index.bin.js clean
-./pkg/dist-node/index.bin.js build
+chmod +x pkg/index.js
+./pkg/index.js clean
+./pkg/index.js build
 
 # Optimize
 chmod +x ./__tests__/optimize.sh
@@ -29,7 +30,7 @@ chmod +x ./__tests__/createIndexFiles.sh
 ./__tests__/createIndexFiles.sh
 
 # Clean directory
-./pkg/dist-node/index.bin.js clean
+./pkg/index.js clean
 DIR=./assets/dist
 if [ -d "$DIR" ]; then
     echo "FAILED (clean): directory $DIR still exists."
@@ -37,7 +38,3 @@ if [ -d "$DIR" ]; then
 else
     echo "PASS (clean): $DIR does not exist."
 fi
-
-
-
-
