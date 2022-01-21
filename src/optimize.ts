@@ -10,6 +10,8 @@ import { Debugger } from "./debugger"
 
 const getConfig = (options: { accessibilityTitle: string }) => {
   return {
+    multipass: true,
+    floatPrecision: 2,
     plugins: [
       {
         name: "preset-default",
