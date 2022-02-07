@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@svgr/core": "6.2.1",
-    "@types/node": "16.11.21",
+    "@types/node": "16.11.22",
     "create-index-normalized": "1.2.0",
     "lodash.camelcase": "4.3.0",
     "lodash.upperfirst": "4.3.1",
