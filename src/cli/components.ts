@@ -16,6 +16,7 @@ export const components = (args, config: AssetsConfig) => {
     icon: true, // preserve viewBox property
     titleProp: true,
     typescript: true,
+    plugins: ["@svgr/plugin-jsx"],
   }
 
   Debugger.log("Loaded svgr config: " + JSON.stringify(svgrConfig))
