@@ -29,7 +29,7 @@
     "typescript": "5.1.6"
   },
   "dependencies": {
-    "@svgr/core": "8.0.0",
+    "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.0.1",
     "@types/node": "18.17.5",
     "create-index-normalized": "1.2.0",
