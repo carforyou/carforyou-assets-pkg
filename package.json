@@ -20,7 +20,7 @@
   "license": "MIT",
   "homepage": "https://github.com/carforyou/assets-pkg#readme",
   "devDependencies": {
-    "@carforyou/eslint-config": "4.0.84",
+    "@carforyou/eslint-config": "4.0.85",
     "@types/jest": "29.5.12",
     "jest": "29.7.0",
     "rimraf": "5.0.5",
